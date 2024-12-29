@@ -10,3 +10,5 @@ def main():
 
   # Begin Consumption
   chat_engine_kafka_consumer.begin_consumption()
+
+main()
