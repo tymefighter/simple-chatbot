@@ -5,7 +5,7 @@ metadata:
   labels:
     app: chat-engine-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: chat-engine
@@ -18,3 +18,13 @@ spec:
       - name: chat-engine
         image: chat-engine
         imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            memory: "4Gi"
+            cpu: "250m"
+          limits:
+            memory: "4Gi"
+            cpu: "500m"
+        env:
+        - name: PYTHONUNBUFFERED
+          value: "1"

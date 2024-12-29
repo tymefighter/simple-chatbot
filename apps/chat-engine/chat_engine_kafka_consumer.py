@@ -20,18 +20,22 @@ class ChatEngineKafkaConsumer:
     print("Subscribed for topic {}".format(Constants.CHAT_ENGINE_REQUEST_KAFKA_TOPIC))
   
   def begin_consumption(self):
-    while True:
-      message = self.consumer.poll(Constants.KAFKA_CONSUMER_POLL_TIME_SECS)
-      if message is None:
-        continue
-      elif message.error():
-        print("Error while polling for message: {}".format(message))
-      else:
-        message_value = message.value().decode('utf-8')
-        print("Consuming message: key: {}, value: {}".format(message.key(), message_value))
+    try:
+      while True:
+        message = self.consumer.poll(Constants.KAFKA_CONSUMER_POLL_TIME_SECS)
+        if message is None:
+          continue
+        elif message.error():
+          print("Error while polling for message: {}".format(message.error()))
+        else:
+          message_value = message.value().decode('utf-8')
+          print("Consuming message: key: {}, value: {}".format(message.key(), message_value))
 
-        engine_response_dict = json.load(message_value)
-        chat_engine_request = ChatEngineRequest(engine_response_dict.get("message"))
+          engine_response_dict = json.load(message_value)
+          chat_engine_request = ChatEngineRequest(engine_response_dict.get("message"))
 
-        chat_engine_response = self.chat_engine.generate(chat_engine_request)
-        self.chat_engine_kafka_producer.send_engine_response(chat_engine_response)
+          chat_engine_response = self.chat_engine.generate(chat_engine_request)
+          self.chat_engine_kafka_producer.send_engine_response(chat_engine_response)
+    finally:
+      print("Consumption ended, closing consumer")
+      self.consumer.close()
