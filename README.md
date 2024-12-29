@@ -19,3 +19,14 @@ It has chat rooms in which the user can start communicating with the AI engine a
 ### Architecture Diagram
 
 ![simple-chatbot-architecture](./resources/simple-chatbot-architecture.jpg)
+
+## Tech Stack
+
+1. ReactJS for SPA UI app.
+2. NodeJS for serving the React UI app.
+3. Java Spring for webapp.
+4. SQL DB for persistence.
+5. Python app for AI chat engine.
+6. Kafka service for communication between Java webapp and AI chat engine.
+7. Docker for containerizing each microservice.
+8. Kubernetes for managing the components of the app.
