@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chat-engine-deployment
+  labels:
+    app: chat-engine-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: chat-engine
+  template:
+    metadata:
+      labels:
+        app: chat-engine
+    spec:
+      containers:
+      - name: chat-engine
+        image: chat-engine
