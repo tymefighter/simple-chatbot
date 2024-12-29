@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: kafka
-        image: apache/kafka:3.7.2
+        image: confluentinc/cp-kafka:7.8.0
         ports:
           - containerPort: 9092
         env:
@@ -36,3 +36,5 @@ spec:
           value: "PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT"
         - name: KAFKA_CONTROLLER_LISTENER_NAMES
           value: "CONTROLLER"
+        - name: CLUSTER_ID
+          value: "chatbot-kafka-cluster"

@@ -13,5 +13,9 @@ class ChatEngineKafkaProducer:
   def send_engine_response(self, chat_engine_response):
     message_key = uuid.uuid4()
     message = json.dumps(chat_engine_response.__dict__)
+
+    print("Sending message on topic with key {} and value {}"
+          .format(Constants.CHAT_ENGINE_RESPONSE_KAFKA_TOPIC, message_key, message))
+    
     self.producer.produce(Constants.CHAT_ENGINE_RESPONSE_KAFKA_TOPIC, key=message_key, value=message)
     self.producer.flush()

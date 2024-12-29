@@ -15,7 +15,9 @@ class ChatEngineKafkaConsumer:
       "auto.offset.reset": "earliest"
     })
 
+    print("Subscribing for topic {}".format(Constants.CHAT_ENGINE_REQUEST_KAFKA_TOPIC))
     self.consumer.subscribe([Constants.CHAT_ENGINE_REQUEST_KAFKA_TOPIC])
+    print("Subscribed for topic {}".format(Constants.CHAT_ENGINE_REQUEST_KAFKA_TOPIC))
   
   def begin_consumption(self):
     while True:
