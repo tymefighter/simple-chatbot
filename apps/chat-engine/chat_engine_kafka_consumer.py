@@ -36,7 +36,7 @@ class ChatEngineKafkaConsumer:
           message = event.value().decode('utf-8')
           print("Consuming message: key: {}, value: {}, partition: {}".format(event.key(), message, event.partition()))
 
-          engine_response_dict = json.load(message)
+          engine_response_dict = json.loads(message)
           chat_engine_request = ChatEngineRequest(engine_response_dict.get("message"))
 
           chat_engine_response = self.chat_engine.generate(chat_engine_request)

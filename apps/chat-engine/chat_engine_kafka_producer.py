@@ -11,7 +11,7 @@ class ChatEngineKafkaProducer:
     })
 
   def send_engine_response(self, chat_engine_response):
-    message_key = uuid.uuid4()
+    message_key = str(uuid.uuid4())
     message = json.dumps(chat_engine_response.__dict__)
 
     print("Sending message on topic with key {} and value {}"

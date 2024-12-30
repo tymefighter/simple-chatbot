@@ -9,5 +9,7 @@ class ChatEngine:
 
   def generate(self, chat_engine_request):
     request_message = chat_engine_request.get_message()
+    print("Generating response for message {}".format(request_message))
     response_message = self.model.generate(request_message, strip_prompt=True)
+    print("Generated response {} for message {}".format(response_message, request_message))
     return ChatEngineResponse(response_message)

@@ -27,13 +27,13 @@ spec:
         - name: KAFKA_CONTROLLER_QUORUM_VOTERS
           value: "1@localhost:9093"
         - name: KAFKA_ADVERTISED_LISTENERS
-          value: "INTERNAL://localhost:9092,PLAINTEXT://kafka-service:29092"
+          value: "PLAINTEXT://kafka-service:9092"
         - name: KAFKA_LISTENERS
-          value: "CONTROLLER://localhost:9093,INTERNAL://localhost:9092,PLAINTEXT://0.0.0.0:29092"
+          value: "CONTROLLER://localhost:9093,PLAINTEXT://0.0.0.0:9092"
         - name: KAFKA_LOG_DIRS
           value: "/tmp/kraft-logs"
         - name: KAFKA_LISTENER_SECURITY_PROTOCOL_MAP
-          value: "CONTROLLER:PLAINTEXT,INTERNAL:PLAINTEXT,PLAINTEXT:PLAINTEXT"
+          value: "CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT"
         - name: KAFKA_CONTROLLER_LISTENER_NAMES
           value: "CONTROLLER"
         - name: CLUSTER_ID
@@ -41,4 +41,4 @@ spec:
         - name: KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR
           value: "1"
         - name: KAFKA_INTER_BROKER_LISTENER_NAME
-          value: "INTERNAL"
+          value: "PLAINTEXT"
