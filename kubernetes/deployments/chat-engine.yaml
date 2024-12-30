@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chat-engine-deployment
+  labels:
+    app: chat-engine-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chat-engine
+  template:
+    metadata:
+      labels:
+        app: chat-engine
+    spec:
+      containers:
+      - name: chat-engine
+        image: chat-engine
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            memory: "4Gi"
+            cpu: "500m"
+          limits:
+            memory: "4Gi"
+            cpu: "1"
+        env:
+        - name: PYTHONUNBUFFERED
+          value: "1"
