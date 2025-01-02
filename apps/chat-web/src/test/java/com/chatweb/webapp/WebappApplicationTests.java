@@ -1,10 +1,10 @@
-package com.chatweb.web;
+package com.chatweb.webapp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class WebApplicationTests {
+class WebappApplicationTests {
 
 	@Test
 	void contextLoads() {
