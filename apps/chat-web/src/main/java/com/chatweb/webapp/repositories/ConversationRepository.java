@@ -1,4 +1,7 @@
 package com.chatweb.webapp.repositories;
 
-class ConversationRepository {
+import com.chatweb.webapp.entities.Conversation;
+import org.springframework.data.repository.ListCrudRepository;
+
+public interface ConversationRepository extends ListCrudRepository<Conversation, Long> {
 }

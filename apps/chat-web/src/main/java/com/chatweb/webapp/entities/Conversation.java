@@ -1,18 +1,20 @@
 package com.chatweb.webapp.entities;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
+@Table("conversation")
 public class Conversation {
 
   @Id
-  private String id;
+  private Long id;
   private String name;
 
-  public String getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
