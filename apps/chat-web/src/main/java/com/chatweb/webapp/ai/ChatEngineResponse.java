@@ -1,9 +1,16 @@
 package com.chatweb.webapp.ai;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class ChatEngineResponse {
 
+  @JsonProperty("source_message_id")
   private Long sourceMessageId;
+
+  @JsonProperty("conversation_id")
   private Long conversationId;
+
+  @JsonProperty("message")
   private String message;
 
   public Long getSourceMessageId() {

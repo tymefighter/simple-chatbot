@@ -38,8 +38,8 @@ class ChatEngineKafkaConsumer:
 
           engine_response_dict = json.loads(message)
           chat_engine_request = ChatEngineRequest(
-            engine_response_dict.get("sourceMessageId"),
-            engine_response_dict.get("conversationId"),
+            engine_response_dict.get("source_message_id"),
+            engine_response_dict.get("conversation_id"),
             engine_response_dict.get("message")
           )
 

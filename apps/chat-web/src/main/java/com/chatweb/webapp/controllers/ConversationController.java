@@ -1,6 +1,7 @@
 package com.chatweb.webapp.controllers;
 
 import com.chatweb.webapp.chat.ChatService;
+import com.chatweb.webapp.entities.Author;
 import com.chatweb.webapp.entities.ChatMessage;
 import com.chatweb.webapp.entities.Conversation;
 import com.chatweb.webapp.repositories.ChatMessageRepository;
@@ -54,10 +55,14 @@ public class ConversationController {
   }
 
   @PostMapping("/{id}/message")
-  public ChatMessage createMessage(@PathVariable("id") Long id, ChatMessage chatMessage) {
+  public ChatMessage createMessage(@PathVariable("id") Long id, @RequestBody ChatMessage chatMessage) {
     if (!Objects.equals(chatMessage.getConversationId(), id)) {
-      throw new RuntimeException("Message conversation id does not match path conversation id");
+      throw new RuntimeException(String.format(
+          "Message conversation id %s does not match path conversation id %s", chatMessage.getConversationId(), id)
+      );
     }
+
+    chatMessage.setAuthor(Author.USER);
 
     return chatService.saveMessage(chatMessage);
   }
