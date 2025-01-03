@@ -12,6 +12,15 @@ public class ChatMessage {
   private String message;
   private Author author;
 
+  public ChatMessage() {
+  }
+
+  public ChatMessage(Long conversationId, String message, Author author) {
+    this.conversationId = conversationId;
+    this.message = message;
+    this.author = author;
+  }
+
   public Long getId() {
     return id;
   }

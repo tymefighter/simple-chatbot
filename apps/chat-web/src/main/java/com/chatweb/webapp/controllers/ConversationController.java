@@ -1,5 +1,6 @@
 package com.chatweb.webapp.controllers;
 
+import com.chatweb.webapp.chat.ChatService;
 import com.chatweb.webapp.entities.ChatMessage;
 import com.chatweb.webapp.entities.Conversation;
 import com.chatweb.webapp.repositories.ChatMessageRepository;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/conversations")
@@ -15,12 +17,15 @@ public class ConversationController {
 
   private final ConversationRepository conversationRepository;
   private final ChatMessageRepository chatMessageRepository;
+  private final ChatService chatService;
 
   @Autowired
   public ConversationController(ConversationRepository conversationRepository,
-                                ChatMessageRepository chatMessageRepository) {
+                                ChatMessageRepository chatMessageRepository,
+                                ChatService chatService) {
     this.conversationRepository = conversationRepository;
     this.chatMessageRepository = chatMessageRepository;
+    this.chatService = chatService;
   }
 
   @GetMapping
@@ -46,5 +51,14 @@ public class ConversationController {
   @GetMapping("/{id}/messages")
   public List<ChatMessage> getConversationMessages(@PathVariable("id") Long id) {
     return chatMessageRepository.findByConversationId(id);
+  }
+
+  @PostMapping("/{id}/message")
+  public ChatMessage createMessage(@PathVariable("id") Long id, ChatMessage chatMessage) {
+    if (!Objects.equals(chatMessage.getConversationId(), id)) {
+      throw new RuntimeException("Message conversation id does not match path conversation id");
+    }
+
+    return chatService.saveMessage(chatMessage);
   }
 }

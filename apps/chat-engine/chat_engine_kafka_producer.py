@@ -12,7 +12,11 @@ class ChatEngineKafkaProducer:
 
   def send_engine_response(self, chat_engine_response):
     message_key = str(uuid.uuid4())
-    message = json.dumps(chat_engine_response.__dict__)
+    message = json.dumps({
+      "sourceMessageId": chat_engine_response.get_source_message_id(),
+      "conversationId": chat_engine_response.get_conversation_id(),
+      "message": chat_engine_response.get_message()
+    })
 
     print("Sending message on topic with key {} and value {}"
           .format(Constants.CHAT_ENGINE_RESPONSE_KAFKA_TOPIC, message_key, message))

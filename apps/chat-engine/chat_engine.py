@@ -12,4 +12,6 @@ class ChatEngine:
     print("Generating response for message {}".format(request_message))
     response_message = self.model.generate(request_message, strip_prompt=True)
     print("Generated response {} for message {}".format(response_message, request_message))
-    return ChatEngineResponse(response_message)
+    return ChatEngineResponse(chat_engine_request.get_source_message_id(),
+                              chat_engine_request.get_conversation_id(), 
+                              response_message)
