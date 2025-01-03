@@ -13,7 +13,7 @@ class ChatEngineKafkaConsumer:
       "bootstrap.servers": Constants.KAFKA_BOOTSTRAP_SERVERS,
       "group.id": Constants.KAFKA_REQUEST_CONSUMER_GROUP_ID,
       "auto.offset.reset": "earliest",
-      "enable.auto.commit": False
+      "enable.auto.commit": True
     })
 
     print("Subscribing for topic {}".format(Constants.CHAT_ENGINE_REQUEST_KAFKA_TOPIC))
@@ -37,12 +37,15 @@ class ChatEngineKafkaConsumer:
           print("Consuming message: key: {}, value: {}, partition: {}".format(event.key(), message, event.partition()))
 
           engine_response_dict = json.loads(message)
-          chat_engine_request = ChatEngineRequest(engine_response_dict.get("message"))
+          chat_engine_request = ChatEngineRequest(
+            engine_response_dict.get("source_message_id"),
+            engine_response_dict.get("conversation_id"),
+            engine_response_dict.get("message")
+          )
 
           chat_engine_response = self.chat_engine.generate(chat_engine_request)
           self.chat_engine_kafka_producer.send_engine_response(chat_engine_response)
 
-          self.consumer.commit(event)
     finally:
       print("Consumption ended, closing consumer")
       self.consumer.close()
