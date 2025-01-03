@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deployment
+  labels:
+    app: mysql-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:9.1.0
+        ports:
+          - containerPort: 3306
+        env:
+        - name: MYSQL_DATABASE
+          value: "chatWebApp"
+        - name: MYSQL_USER
+          value: "tymefighter"
+        - name: MYSQL_PASSWORD
+          value: "tymefighter@123"
+        - name: MYSQL_ROOT_PASSWORD
+          value: "tymefighter@12345"
