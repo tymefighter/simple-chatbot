@@ -12,3 +12,7 @@ kubectl delete deployment mysql-deployment
 # Chat Web
 kubectl delete svc chat-web-service
 kubectl delete deployment chat-web-deployment
+
+# Chat UI
+kubectl delete svc chat-ui-service
+kubectl delete deployment chat-ui-deployment

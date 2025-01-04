@@ -1,0 +1,16 @@
+FROM node:23-alpine
+
+COPY . /
+
+WORKDIR /chat-ui-client
+RUN npm install
+RUN npm run build
+RUN cd ..
+
+WORKDIR /chat-ui-server
+RUN npm install
+RUN npm run build
+
+ENV NODE_ENV=production
+
+CMD [ "npm", "run", "start" ]

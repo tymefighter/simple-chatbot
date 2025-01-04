@@ -13,7 +13,7 @@ interface Output {
 }
 
 export const useConversations = (): Output => {
-  const { data: conversations, isLoading } = useSWR<Conversation[]>('/api/conversations', fetcher);
+  const { data: conversations, isLoading } = useSWR<Conversation[]>('/conversations', fetcher);
   
   return {
     conversations,

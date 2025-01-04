@@ -18,7 +18,7 @@ interface Output {
 
 export const useChatMessages = ({ conversationId }: Input): Output => {
   const { data: messages, isLoading } = useSWR<ChatMessage[]>(
-    conversationId ? `/api/conversations/${conversationId}/messages` : undefined, 
+    conversationId ? `/conversations/${conversationId}/messages` : undefined, 
     fetcher
   );
   

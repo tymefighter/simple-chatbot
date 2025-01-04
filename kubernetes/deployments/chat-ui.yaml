@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: chat-web-deployment
+  name: chat-ui-deployment
   labels:
-    app: chat-web-deployment
+    app: chat-ui-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: chat-web
+      app: chat-ui
   template:
     metadata:
       labels:
-        app: chat-web
+        app: chat-ui
     spec:
       containers:
-      - name: chat-web
-        image: chat-web
+      - name: chat-ui
+        image: chat-ui
         imagePullPolicy: IfNotPresent
         resources:
           requests:
