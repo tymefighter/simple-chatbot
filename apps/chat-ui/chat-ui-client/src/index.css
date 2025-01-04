@@ -1,3 +1,12 @@
+:root {
+  --primary-color: #303063;
+  --secondary-color: #1f1f40;
+  --border-color: #adadff
+}
+
 body {
   margin: 0;
+  color: white;
+
+  font-family: 'Roboto', sans-serif;
 }

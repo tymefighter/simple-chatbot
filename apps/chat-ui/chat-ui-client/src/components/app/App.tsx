@@ -2,11 +2,9 @@
 import { useState, useCallback } from 'react';
 
 // Components
+import { AppLayout, SlotName } from './components/AppLayout';
 import { Sidenav } from 'components/sidenav';
 import { ChatWindow } from 'components/chatWindow';
-
-// Styles
-import './App.css';
 
 export const App = (): JSX.Element => {
   const [conversationId, setConversationId] = useState<number>();
@@ -16,9 +14,13 @@ export const App = (): JSX.Element => {
   }, []);
 
   return (
-    <div className="App">
-      <Sidenav onSelectConversation={onSelectConversation} />
+    <AppLayout>
+      <AppLayout.Slot name={SlotName.SIDE_NAV}>
+        <Sidenav onSelectConversation={onSelectConversation} />
+      </AppLayout.Slot>
+      <AppLayout.Slot name={SlotName.MAIN}>
       <ChatWindow conversationId={conversationId} />
-    </div>
+      </AppLayout.Slot>
+    </AppLayout>
   );
 }

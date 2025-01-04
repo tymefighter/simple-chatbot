@@ -1,6 +1,7 @@
 // Components
 import { SidenavTombstone } from './components/SidenavTombstone';
 import { SidenavError } from './components/SidenavError';
+import { EmptySidenav } from './components/EmptySidenav';
 import { SidenavBody } from './components/SidenavBody';
 
 // Hooks
@@ -22,6 +23,12 @@ export const Sidenav = ({ onSelectConversation }: SidenavProps): JSX.Element => 
   if (!conversations) {
     return (
       <SidenavError />
+    );
+  }
+
+  if (!conversations.length) {
+    return (
+      <EmptySidenav onSelectConversation={onSelectConversation} />
     );
   }
 

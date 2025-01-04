@@ -1,0 +1,13 @@
+.empty-chat-window-container {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.empty-chat-window-text {
+  margin: 0;
+  font-size: 1.2rem;
+}
