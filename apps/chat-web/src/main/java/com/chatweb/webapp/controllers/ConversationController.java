@@ -54,7 +54,7 @@ public class ConversationController {
     return chatMessageRepository.findByConversationId(id);
   }
 
-  @PostMapping("/{id}/message")
+  @PostMapping("/{id}/messages")
   public ChatMessage createMessage(@PathVariable("id") Long id, @RequestBody ChatMessage chatMessage) {
     if (!Objects.equals(chatMessage.getConversationId(), id)) {
       throw new RuntimeException(String.format(

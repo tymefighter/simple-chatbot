@@ -1,0 +1,14 @@
+:root {
+  --primary-color: #303063;
+  --secondary-color: #1f1f40;
+  --tertiary-color: #171730;
+  --border-color: #adadff;
+  --font-color: white;
+}
+
+body {
+  margin: 0;
+  color: var(--font-color);
+
+  font-family: 'Roboto', sans-serif;
+}

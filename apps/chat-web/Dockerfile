@@ -11,7 +11,7 @@ COPY build.gradle.kts /app/build.gradle.kts
 COPY settings.gradle.kts /app/settings.gradle.kts
 COPY src /app/src
 
-RUN gradle build --no-daemon
+RUN gradle clean build --no-daemon --no-build-cache
 
 # Run Stage
 

@@ -1,0 +1,19 @@
+.chat-window-message {
+  border-radius: 0.4rem;
+  max-width: 60%;
+  padding: 0.4rem;
+  background-color: var(--secondary-color);
+  border: 1px solid var(--border-color);
+}
+
+.chat-window-message-user {
+  align-self: flex-end;
+}
+
+.chat-window-message-ai {
+  align-self: flex-start;
+}
+
+.chat-message-text {
+  margin: 0;
+}

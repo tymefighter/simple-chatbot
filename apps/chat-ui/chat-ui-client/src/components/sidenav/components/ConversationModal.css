@@ -1,0 +1,37 @@
+.conversation-modal-body {
+  display: flex;
+  flex-direction: row;
+  gap: 0.4rem;
+}
+
+.conversation-name-label {
+  font-size: 1.4rem;
+}
+
+.conversation-name-input {
+  font-size: 1.2rem;
+  width: 20rem;
+  border-color: var(--border-color);
+  background-color: var(--primary-color);
+  color: var(--font-color);
+
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+}
+
+.conversation-name-input::placeholder {
+  color: var(--font-color);
+}
+
+.conversation-name-input:focus {
+  outline-width: 0;
+  
+  border-color: var(--border-color);
+  background-color: var(--primary-color);
+  color: var(--font-color);
+
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+}
