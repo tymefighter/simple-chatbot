@@ -1,5 +1,5 @@
 // Libraries
-import { useState, useCallback, type ChangeEvent } from 'react';
+import { useState, useCallback, useEffect, type ChangeEvent } from 'react';
 
 // Hooks
 import { useSendChatMessage } from '../hooks/useSendChatMessage';
@@ -34,6 +34,20 @@ export const ChatMessageInput = ({ conversationId }: ChatMessageInputProps): JSX
 
     setMessage('');
   }, [conversationId, message, sendChatMessage]);
+
+  useEffect(() => {
+    const onEnterKeyPress = (event: KeyboardEvent): void => {
+      if (event.key === 'Enter') {
+        onClick();
+      }
+    };
+    
+    document.addEventListener('keydown', onEnterKeyPress);
+
+    return () => {
+      document.removeEventListener('keydown', onEnterKeyPress);
+    };
+  }, [onClick]);
 
   return (
     <div className="chat-message-input-container">
