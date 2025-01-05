@@ -2,7 +2,7 @@
 import useSWR from 'swr';
 
 // Utils
-import { fetcher } from 'utils/fetcher';
+import { fetcher } from 'utils';
 
 // Types
 import type { Conversation } from '../types';

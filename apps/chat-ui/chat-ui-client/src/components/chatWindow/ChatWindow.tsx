@@ -35,6 +35,7 @@ export const ChatWindow = ({ conversationId }: ChatWindowProps): JSX.Element => 
 
   return (
     <ChatWindowBody 
+      conversationId={conversationId}
       messages={messages}
     />
   );

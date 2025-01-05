@@ -5,3 +5,15 @@ export const fetcher = async (path: string, init?: RequestInit): Promise<any> =>
   const res = await fetch(_path, init);
   return res.json();
 }
+
+export const mutator = async <T> (url: string, { arg }: { arg: T }): Promise<T> => {
+  const res = await fetch(getAPIPath(url), {
+    method: 'POST',
+    body: JSON.stringify(arg),
+    headers: {
+      'content-type': 'application/json'
+    }
+  });
+
+  return res.json();
+}

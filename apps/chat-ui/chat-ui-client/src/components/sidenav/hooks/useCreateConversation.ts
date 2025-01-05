@@ -2,22 +2,10 @@
 import useSWRMutation from 'swr/mutation'
 
 // Utils
-import { getAPIPath } from 'utils/fetcher';
+import { mutator } from 'utils';
 
 // Types
 import type { Conversation } from '../types';
-
-const createConversation = async (url: string, { arg }: { arg: Conversation }): Promise<Conversation> => {
-  const res = await fetch(getAPIPath(url), {
-    method: 'POST',
-    body: JSON.stringify(arg),
-    headers: {
-      'content-type': 'application/json'
-    }
-  });
-
-  return res.json();
-}
 
 interface Output {
   createConversation: (conversation: Conversation) => Promise<Conversation>;
@@ -25,7 +13,7 @@ interface Output {
 }
 
 export const useCreateConversation = (): Output => {
-  const { trigger, isMutating } = useSWRMutation('/conversations', createConversation);
+  const { trigger, isMutating } = useSWRMutation('/conversations', mutator<Conversation>);
 
   return {
     createConversation: trigger,
