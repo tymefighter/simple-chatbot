@@ -10,7 +10,10 @@ import type { Conversation } from '../types';
 const createConversation = async (url: string, { arg }: { arg: Conversation }): Promise<Conversation> => {
   const res = await fetch(getAPIPath(url), {
     method: 'POST',
-    body: JSON.stringify(arg)
+    body: JSON.stringify(arg),
+    headers: {
+      'content-type': 'application/json'
+    }
   });
 
   return res.json();
