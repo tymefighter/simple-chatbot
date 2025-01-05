@@ -25,12 +25,14 @@ export const ChatMessageInput = ({ conversationId }: ChatMessageInputProps): JSX
   }, []);
 
   const { sendChatMessage, isChatMessageBeingSent } = useSendChatMessage({ conversationId });
-  const onClick = useCallback(() => {
-    sendChatMessage({
+  const onClick = useCallback(async () => {
+    await sendChatMessage({
       conversationId,
       message,
       author: Author.USER
     } as ChatMessage);
+
+    setMessage('');
   }, [conversationId, message, sendChatMessage]);
 
   return (
