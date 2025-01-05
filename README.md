@@ -4,9 +4,45 @@
 
 A simple chatbot application in which the user can communicate with an AI based chat engine. The purpose of this application is to implement an application using the microservice architecture.
 
+![simple-chatbot](./resources/simple-chatbot.png)
+
 ## Capabilities
 
 It has chat rooms in which the user can start communicating with the AI engine about a particular topic.
+
+## Demo
+
+Following is the app demo: -
+
+![simple-chatbot-demo](./resources/demo.gif)
+
+Demo video can be found here: [simple-chatbot-demo](./resources/demo.mov)
+
+## Steps to run
+
+1. Start local minikube kubernetes server
+
+```sh
+minikube start
+```
+
+2. Start the application
+
+```sh
+./start.sh
+```
+
+3. Expose the service to access via browser
+
+```sh
+minikube service chat-ui-service
+```
+
+1. Can stop the application
+
+```sh
+./stop.sh
+```
 
 ## Architecture
 
