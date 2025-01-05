@@ -1,0 +1,16 @@
+.start-conversation-button {
+  border-radius: 1.6rem;
+  padding: 0.4rem;
+  cursor: pointer;
+  border-color: var(--border-color);
+  background-color: var(--primary-color);
+  color: var(--font-color);
+}
+
+.start-conversation-button:hover {
+  background-color: var(--secondary-color);
+}
+
+.start-conversation-button:active {
+  background-color: var(--tertiary-color);
+}

@@ -4,6 +4,9 @@ import { useState, useCallback } from 'react';
 // Components
 import { ConversationModal } from './ConversationModal';
 
+// Styles
+import './StartConversationButton.css';
+
 interface StartConversationButtonProps {
   onSelectConversation: (conversationId: number) => void;
 }
@@ -16,7 +19,7 @@ export const StartConversationButton = ({ onSelectConversation }: StartConversat
 
   return (
     <>
-      <button onClick={onClick}>
+      <button onClick={onClick} className="start-conversation-button">
         Start a new conversation
       </button>
       {showModal ? (
